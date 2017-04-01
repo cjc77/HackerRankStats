@@ -26,10 +26,6 @@ int main()
     }
     // Sort it
     qsort(array, size, sizeof(int), compare);
-    // Print it
-//    for(int i = 0; i < size; ++i) {
-//        printf("%d\n", *(array + i));
-//    }
     avg = mean(array, size);
     med = median(array, size);
     mod = mode(array, size);
@@ -53,7 +49,7 @@ float mean(int * array, int size)
 
 
 
-float median (int * array, int size)
+float median(int * array, int size)
 {
     int idx1 = 0;
     int idx2 = -1;
@@ -67,7 +63,7 @@ float median (int * array, int size)
         idx1 = size / 2;
     }
     // if size was even
-    if (idx2 > 0) {
+    if(idx2 > 0) {
         med = (float)*(array + idx1) + (float)*(array + idx2);
         return med / 2;
     }
@@ -76,7 +72,7 @@ float median (int * array, int size)
 }
 
 
-int mode (int * array, int size)
+int mode(int * array, int size)
 {
     int curMode = 0; int count = 0; int maxCount = 0;
 
@@ -84,13 +80,13 @@ int mode (int * array, int size)
         count = 0;
 
         // Find num occurances of array[i]
-        for (int j = 0; j < size; ++j) {
+        for(int j = 0; j < size; ++j) {
             if (*(array + j) == *(array + i))
                 ++count;
         }
 
         // See if this item appears more times than a previous item
-        if (count > maxCount) {
+        if(count > maxCount) {
             maxCount = count;
             curMode = *(array + i);
         }
