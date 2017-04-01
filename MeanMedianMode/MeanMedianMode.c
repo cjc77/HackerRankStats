@@ -9,6 +9,8 @@ float median(int * array, int size);
 int mode (int * array, int size);
 int compare(const void * a, const void * b);
 
+
+
 int main()
 {
     int size = 0;
@@ -34,6 +36,7 @@ int main()
     printf("%.1f\n", avg);
     printf("%.1f\n", med);
     printf("%d\n", mod);
+    free(array);
     return 0;
 }
 
@@ -43,7 +46,7 @@ float mean(int * array, int size)
 {
     int sum = 0;
     for(int i = 0; i < size; ++i) {
-        sum += *(array + i); 
+        sum += *(array + i);
     }
     return (float)sum/(float)size;
 }
@@ -76,9 +79,9 @@ float median (int * array, int size)
 int mode (int * array, int size)
 {
     int curMode = 0; int count = 0; int maxCount = 0;
-    
+
     for(int i = 0; i < size; ++i) {
-        count = 0; 
+        count = 0;
 
         // Find num occurances of array[i]
         for (int j = 0; j < size; ++j) {
