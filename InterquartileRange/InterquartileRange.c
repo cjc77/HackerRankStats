@@ -13,8 +13,11 @@ float quartile(int * array, int size, int qNum);
 
 int main()
 {
+    // Individual values
     int * data = NULL;
+    // Weights of values
     int * freq = NULL;
+    // vals * weights
     int * master = NULL;
     int size = 0; int fullSize = 0;
     float q1 = 0.0; float q2 = 0.0; float q3 = 0.0;
@@ -22,9 +25,11 @@ int main()
 
     readArrays(& data, & freq, & size, & fullSize);
     makeMaster(& master, data, freq, size, fullSize);
+
     q1 = quartile(master, fullSize, 1);
     q2 = quartile(master, fullSize, 2);
     q3 = quartile(master, fullSize, 3);
+
     qRange = q3 - q1;
     printf("%.1f\n", qRange);
 
@@ -38,14 +43,15 @@ int main()
 void readArrays(int ** array1, int ** array2, int * size, int * fullSize)
 {
     scanf("%d", size);
-    *array1 = malloc(sizeof(int) * (*size));
-    *array2 = malloc(sizeof(int) * (*size));
+    * array1 = malloc(sizeof(int) * (*size));
+    * array2 = malloc(sizeof(int) * (*size));
     for(int i = 0; i < *size; ++i) {
         scanf("%d", (*array1 + i));
     }
     for(int i = 0; i < *size; ++i) {
         scanf("%d", (*array2 + i));
     }
+    // Sum up the weights
     for(int i = 0; i < *size; ++i) {
         *fullSize += *(*array2 + i);
     }
@@ -58,6 +64,7 @@ void makeMaster(int ** master, int * nums, int * freq, int size, int newSize)
     * master = malloc(sizeof(int) * newSize);
     for(int i = 0; i < size; ++i) {
         for(int j = 0; j < *(freq + i); ++j) {
+            // put this value in master as many times as it occurs
             *(*master + idx) = *(nums + i);
             ++idx;
         }
