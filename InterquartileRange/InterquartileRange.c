@@ -28,6 +28,9 @@ int main()
     qRange = q3 - q1;
     printf("%.1f\n", qRange);
 
+    free(data);
+    free(freq);
+    free(master);
     return 0;
 }
 
