@@ -21,24 +21,22 @@ fn main() {
     println!("{}", mode(&x, n));
 }
 
-fn mean(x: &Vec<i32>, n: u32) -> f64 {
+fn mean(x: &[i32], n: u32) -> f64 {
     let sum: i32 = x.iter().sum();
     (sum as f64) / (n as f64)
 }
 
-fn median(x: &Vec<i32>, n: u32) -> f64 {
-    let idx_len = n - 1;
-
-    let i1 = (idx_len / 2) as usize;
+fn median(x: &[i32], n: u32) -> f64 {
+    let i1 = ( (n - 1) / 2 ) as usize;
     if n % 2 == 0 {
-        let i2 = (idx_len / 2 + 1) as usize;
+        let i2 = i1 + 1 as usize;
         (x[i1] + x[i2]) as f64 / 2f64
     } else {
         x[i1] as f64
     }
 }
 
-fn mode(x: &Vec<i32>, n: u32) -> i32 {
+fn mode(x: &[i32], n: u32) -> i32 {
     let mut mode: i32 = x[0];
     let mut max_count: u32 = 1;
     let mut count: u32 = 1;
